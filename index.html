@@ -17,6 +17,7 @@
             background-color: white;
             color: black;
             overflow: hidden;
+            transition: background-color 0.3s ease; 
         }
         h1 {
             font-size: 2em;
@@ -27,26 +28,27 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             margin-top: 20px;
         }
         .eye {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 70px;
             background-color: #fff;
             border: 2px solid black;
-            border-radius: 50%;
+            border-radius: 50% / 80%; 
             position: relative;
         }
         .pupil {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background-color: black;
             border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            transition: transform 0.05s ease-out; 
         }
         footer {
             position: absolute;
@@ -56,7 +58,7 @@
     </style>
 </head>
 <body>
-    <h1>Coming soon...👀</h1>
+    <h1>Coming soon...</h1>
     <div class="eyes">
         <div class="eye">
             <div class="pupil"></div>
@@ -67,20 +69,51 @@
     </div>
     <footer>terolax.com</footer>
     <script>
+        let colorInterval = null; 
+
+        
+        function startColorChange() {
+            colorInterval = setInterval(() => {
+                const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+                document.body.style.backgroundColor = randomColor;
+            }, 300); 
+        }
+
+        
+        function stopColorChange() {
+            clearInterval(colorInterval);
+            document.body.style.backgroundColor = 'white';
+        }
+
+        
+        document.addEventListener("click", () => {
+            if (colorInterval) {
+                stopColorChange();
+                colorInterval = null;
+            } else {
+                startColorChange();
+            }
+        });
+
+        
         document.addEventListener("mousemove", (event) => {
             const eyes = document.querySelectorAll(".eye");
             eyes.forEach((eye) => {
                 const rect = eye.getBoundingClientRect();
-                const eyeCenterX = rect.left + rect.width / 2;
-                const eyeCenterY = rect.top + rect.height / 2;
+                const eyeCenterX = rect.left + rect.width / 4;
+                const eyeCenterY = rect.top + rect.height / 4;
                 const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
+
+                const maxMove = 20; 
+                const pupilX = Math.cos(angle) * maxMove;
+                const pupilY = Math.sin(angle) * maxMove;
+
                 const pupil = eye.querySelector(".pupil");
-                const pupilX = Math.cos(angle) * 10; // Pupil hareket mesafesi
-                const pupilY = Math.sin(angle) * 10;
                 pupil.style.transform = `translate(${pupilX - 50}%, ${pupilY - 50}%)`;
             });
         });
     </script>
 </body>
 </html>
+
 
