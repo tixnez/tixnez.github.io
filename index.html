@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
+    <link rel="icon" href="logo.png" type="image/png"> 
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -14,14 +16,71 @@
             font-family: Arial, sans-serif;
             background-color: white;
             color: black;
+            overflow: hidden;
         }
         h1 {
             font-size: 2em;
             text-align: center;
+            position: relative;
+        }
+        .eyes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .eye {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border: 2px solid black;
+            border-radius: 50%;
+            position: relative;
+        }
+        .pupil {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
     <h1>Coming soon...👀</h1>
+    <div class="eyes">
+        <div class="eye">
+            <div class="pupil"></div>
+        </div>
+        <div class="eye">
+            <div class="pupil"></div>
+        </div>
+    </div>
+    <footer>terolax.com</footer>
+    <script>
+        document.addEventListener("mousemove", (event) => {
+            const eyes = document.querySelectorAll(".eye");
+            eyes.forEach((eye) => {
+                const rect = eye.getBoundingClientRect();
+                const eyeCenterX = rect.left + rect.width / 2;
+                const eyeCenterY = rect.top + rect.height / 2;
+                const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
+                const pupil = eye.querySelector(".pupil");
+                const pupilX = Math.cos(angle) * 10; // Pupil hareket mesafesi
+                const pupilY = Math.sin(angle) * 10;
+                pupil.style.transform = `translate(${pupilX - 50}%, ${pupilY - 50}%)`;
+            });
+        });
+    </script>
 </body>
 </html>
+
