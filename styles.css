@@ -1,0 +1,120 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    overflow: auto;
+    color: white;
+}
+
+.background {
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: backgroundAnimation 10s infinite linear;
+}
+
+@keyframes backgroundAnimation {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+.tournament-tree {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    position: relative;
+}
+
+/* Sol ve sağ taraf */
+.round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left, .right {
+    flex: 1;
+}
+
+.center {
+    flex: 0.5;
+}
+
+/* Oyuncu kutuları */
+.match {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.player {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    margin: 5px 0;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    width: 120px;
+    transition: transform 0.2s;
+}
+
+.player:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Çizgiler */
+.connector {
+    width: 2px;
+    height: 50px;
+    background: white;
+    margin: 10px 0;
+}
+
+.final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.final-connector {
+    width: 2px;
+    height: 100px;
+    background: white;
+    margin: 20px 0;
+}
+
+/* Şampiyon */
+.champion h1 {
+    font-size: 24px;
+    color: gold;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px gold, 0 0 20px gold; }
+    to { text-shadow: 0 0 20px orange, 0 0 30px orange; }
+}
+
+/* Responsive Tasarım */
+@media screen and (max-width: 768px) {
+    .tournament-tree {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .round {
+        flex: none;
+        margin: 10px 0;
+    }
+}
