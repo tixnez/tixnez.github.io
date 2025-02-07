@@ -467,7 +467,7 @@ body {
     top: 50%;
     left: -30px;
     width: 2px;
-    height: 82px; 
+    height: 42px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -483,7 +483,7 @@ body {
     top: 50%;
     left: -30px;
     width: 2px;
-    height: 162px; 
+    height: 82px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -499,7 +499,7 @@ body {
     top: 50%;
     left: -30px;
     width: 2px;
-    height: 322px; 
+    height: 162px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -514,7 +514,7 @@ body {
     top: 50%;
     left: -30px;
     width: 2px;
-    height: 642px; 
+    height: 322px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -533,7 +533,7 @@ body {
     top: 50%;
     left: -30px;
     width: 2px;
-    height: 1282px; 
+    height: 642px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -551,7 +551,7 @@ body {
     top: 50%;
     right: -30px; 
     width: 2px;
-    height: 1282px;
+    height: 642px;
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -567,7 +567,7 @@ body {
     top: 50%;
     right: -30px; 
     width: 2px;
-    height: 642px; 
+    height: 322px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -583,7 +583,7 @@ body {
     top: 50%;
     right: -30px; 
     width: 2px;
-    height: 322px; 
+    height: 162px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -599,7 +599,7 @@ body {
     top: 50%;
     right: -30px; 
     width: 2px;
-    height: 162px; 
+    height: 82px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
@@ -615,7 +615,7 @@ body {
     top: 50%;
     right: -30px; 
     width: 2px;
-    height: 82px; 
+    height: 42px; 
     background: rgba(255, 127, 80, 0.7);
     transform: translateY(-50%);
 }
