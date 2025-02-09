@@ -68,6 +68,6 @@ zoomOutBtn.addEventListener('click', function() {
 
 
 resetZoomBtn.addEventListener('click', function() {
-    scaleFactor = 1; 
+    scaleFactor = 0.5; 
     tournament.style.transform = `scale(${scaleFactor})`; 
 });
