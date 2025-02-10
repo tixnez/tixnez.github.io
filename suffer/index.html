@@ -7,8 +7,50 @@
     <title>Terolax</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <style>
+        /* Preloader stili */
+        #preloader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: #000;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          transition: opacity 0.5s ease;
+        }
+        #preloader .loading-logo {
+          width: 150px;
+          height: auto;
+          animation: spin 2s infinite;
+        }
+        #preloader .loading-text {
+          margin-top: 20px;
+          font-size: 2em;
+          color: #fff;
+        }
+        @keyframes spin {
+         0% { transform: rotate(0deg); }
+         70% { transform: rotate(365deg); }
+         80% { transform: rotate(355deg); }
+         90% { transform: rotate(360deg); }
+         100% { transform: rotate(360deg); }
+        }
+      </style>
 </head>
 <body>
+    <div id="preloader">
+        <img class="loading-logo" src="logo.png" alt="Logo">
+        <h1 class="loading-text">Loading..</h1>
+    </div>
+
+
+
+
     <h1 class="tournament-title">🏆SUFFER MACE TOURNAMENT🏆</h1>
 
     <div class="background-animation"></div>
@@ -823,7 +865,34 @@
         </div>
     </div>
 
-    
+    <script>
+    // Sayfa tamamen yüklendiğinde preloader'ı solma (fade out) efektiyle gizle
+    window.addEventListener('load', function() {
+      var preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      // CSS transition süresine uygun olarak 500ms sonra display:none yapıyoruz
+      setTimeout(function() {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+
+    // Dahili linklere tıklanıldığında preloader'ı tekrar göster (yeni sayfanın yüklenmesi için)
+    document.addEventListener('DOMContentLoaded', function() {
+      // target="_blank" olmayan tüm dahili bağlantıları seçiyoruz
+      var links = document.querySelectorAll('a:not([target="_blank"])');
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          var preloader = document.getElementById('preloader');
+          // Preloader'ı yeniden görüntüle
+          preloader.style.display = 'flex';
+          // Küçük bir gecikmeyle opaklığı hemen yükseltelim
+          setTimeout(function() {
+            preloader.style.opacity = '1';
+          }, 10);
+        });
+      });
+    });
+  </script>
     <script src="script.js"></script>
 </body>
 </html>

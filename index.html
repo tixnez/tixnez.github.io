@@ -13,13 +13,30 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
-            position: relative;
+            background-color: #000;
+            color: #fff;
+        }
+        #container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            width: 150px; 
+            height: auto;
+            animation: spin 2s infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            70% { transform: rotate(365deg); }
+            80% { transform: rotate(355deg); }
+            90% { transform: rotate(360deg); }
+            100% { transform: rotate(360deg); }
         }
         h1 {
+            margin-top: 20px;
             font-size: 2em;
-            text-align: center;
         }
         .footer {
             position: absolute;
@@ -29,10 +46,61 @@
             width: 100%;
             color: rgb(0, 0, 0);
         }
+
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    #preloader .loading-logo {
+      width: 150px;
+      height: auto;
+      animation: spin 2s infinite;
+    }
+    #preloader .loading-text {
+      margin-top: 20px;
+      font-size: 2em;
+    }
     </style>
 </head>
 <body>
-    <h1>Coming soon...</h1>
+
+    <div id="preloader">
+        <img class="loading-logo" src="logo.png" alt="Logo">
+        <h1 class="loading-text">Loading..</h1>
+      </div>
+
+
+
+
+    <div id="container">
+        <img class="logo" src="logo.png" alt="Logo">
+        <h1>Coming soon..</h1>
+    </div>
     <div class="footer">terolax.com/suffer</div>
+
+
+    <script>
+        window.addEventListener('load', function() {
+          var preloader = document.getElementById('preloader');
+          // Yüklenme ekranını soluma (fade out) efektiyle gizle
+          preloader.style.opacity = '0';
+          setTimeout(function() {
+            preloader.style.display = 'none';
+            // Ana içeriği göster
+            document.getElementById('container').style.opacity = '1';
+          }, 500); // CSS'deki transition süresi ile uyumlu
+        });
+      </script>
 </body>
 </html>
